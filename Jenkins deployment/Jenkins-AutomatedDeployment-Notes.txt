@@ -1,0 +1,35 @@
+
+
+
+ 1 Start Jenkins  server  -- java -jar jenkins.war 
+     Start Tomcat server     
+ 2 . Installation of Plugin "Deploy Plugin container"
+	 https://wiki.jenkins-ci.org/display/J
+	..can be download from internet  and install in jenkins 
+		or
+	- Manage Jenkins - Plugins Manager 
+	- Click on Available tab and search for deploy to container Add to Jenkins 
+
+ 3. Now, Create a Build JOB in Jenkins (Freestyle only)
+
+4.  for demo purpose , download the "sample.war" file and copy sample.war file  into the path= .jenkins/workspace
+	Under Post-Build Actions
+		- select the "Deploy war/ear to container" 
+		  ContextPath = sample.war
+		  Containers = select Tomcat7.x(from the drop down list)
+		     
+		(add values to the fields) 
+
+	sample war file - https://tomcat.apache.org/tomcat-6.0-... 
+
+5.   	To create new user in tomcat, 
+	goto your tomcat folder c:\tomcat\conf\tomcat-users.xml file and make the following changes in it.
+
+	In tomcat-users.xml add user for DEPLOYMENT 
+	  <user username="deployer" password="deployer" roles ="manager-script" />
+
+ 6 Now Build the jenkins job.
+
+  7. Open the tomcat url :  http://localhost:8080/sample.war
+       Java Application will be executed.
+
